@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Header from "./components/Header";
+import BooksContainer from "./components/BooksContainer";
 
 function App() {
+  const [books, setBooks] = useState([]);
+  const [searchedBook, setSearchedBook] = useState("");
+  const [page, setPage] = useState(1);
+
+  const searchBook = (book) => {
+    setSearchedBook(book);
+  };
+
+  const handlePage = (page) => {
+    setPage(page);
+  };
+
+  useEffect(() => {
+    if (!searchedBook) return;
+
+    return fetch(`https://api.itbook.store/1.0/search/${searchedBook}/${page}`)
+      .then((res) => res.json())
+      .then((data) => setBooks(data.books));
+  }, [searchedBook, page]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header searchBook={searchBook} />
+      <BooksContainer books={books} handlePage={handlePage} />
     </div>
   );
 }
