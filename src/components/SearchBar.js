@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function SearchBar({ searchBook }) {
+function SearchBar({ setSearchedBook }) {
   const [input, setInput] = useState("");
 
   const handleInput = (e) => {
@@ -9,7 +9,7 @@ function SearchBar({ searchBook }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchBook(input);
+    setSearchedBook(input);
     setInput("");
   };
 
@@ -22,9 +22,7 @@ function SearchBar({ searchBook }) {
           value={input}
           onChange={handleInput}
         />
-        <button type="submit" onClick={handleSubmit}>
-          Search
-        </button>
+        <button onClick={handleSubmit}>Search</button>
       </form>
     </div>
   );

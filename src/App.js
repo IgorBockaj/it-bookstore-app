@@ -1,32 +1,31 @@
-import React, { useEffect, useState } from "react";
-import Header from "./components/Header";
-import BooksContainer from "./components/BooksContainer";
+import React, { useState, useEffect } from "react";
+import { fetchBooks } from "./actions";
+import SearchBar from "./components/SearchBar";
+import { useDispatch } from "react-redux";
+import BookContainer from "./components/BookContainer";
+import Cart from "./components/Cart";
 
 function App() {
-  const [books, setBooks] = useState([]);
   const [searchedBook, setSearchedBook] = useState("");
   const [page, setPage] = useState(1);
-
-  const searchBook = (book) => {
-    setSearchedBook(book);
-  };
-
-  const handlePage = (page) => {
-    setPage(page);
-  };
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (!searchedBook) return;
 
-    return fetch(`https://api.itbook.store/1.0/search/${searchedBook}/${page}`)
-      .then((res) => res.json())
-      .then((data) => setBooks(data.books));
-  }, [searchedBook, page]);
+    return dispatch(fetchBooks(searchedBook, page));
+  }, [searchedBook, dispatch, page]);
 
   return (
     <div>
-      <Header searchBook={searchBook} />
-      <BooksContainer books={books} handlePage={handlePage} />
+      <SearchBar setSearchedBook={setSearchedBook} />
+      <Cart />
+      <BookContainer />
+      <div>
+        <button onClick={() => setPage(1)}>1</button>
+        <button onClick={() => setPage(2)}>2</button>
+        <button onClick={() => setPage(3)}>3</button>
+      </div>
     </div>
   );
 }
