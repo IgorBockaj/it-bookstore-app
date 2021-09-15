@@ -1,24 +1,28 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addBookToCart } from "../actions";
 
-function BookCard() {
+function BookCard({ book }) {
   const dispatch = useDispatch();
-  const books = useSelector((state) => state.books);
+  const cart = useSelector((state) => state.cart);
 
-  return books.length === 0
-    ? null
-    : books[0].map((book) => (
-        <li key={book.isbn13}>
-          {book.title}
-          <br />
-          {book.price}
+  const cartIDs = cart.map((item) => item.id);
 
-          <button onClick={() => dispatch(addBookToCart(book))}>
-            add to cart
-          </button>
-        </li>
-      ));
+  const handleAdd = (book) => {
+    dispatch(addBookToCart(book));
+  };
+
+  return (
+    <>
+      <li key={book.isbn13}>
+        {book.title} {book.price}
+      </li>
+
+      {cartIDs.includes(book.isbn13) ? null : (
+        <button onClick={() => handleAdd(book)}>Add to cart</button>
+      )}
+    </>
+  );
 }
 
 export default BookCard;

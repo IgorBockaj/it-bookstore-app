@@ -14,7 +14,7 @@ export const addBookToCart = (book) => {
 export const removeBookFromCart = (book) => {
   return {
     type: REMOVE_BOOK_FROM_CART,
-    payload: { id: book.isbn13 },
+    payload: { id: book.id },
   };
 };
 
