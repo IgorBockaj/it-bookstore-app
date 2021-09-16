@@ -1,0 +1,61 @@
+.search-bar {
+  padding: 0 30px;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: lightgreen;
+  color: white;
+}
+
+.home-link,
+.cart-link {
+  width: 150px;
+  height: 80%;
+}
+
+.searchbar-button {
+  height: 100%;
+  width: 100%;
+  letter-spacing: 3px;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 600;
+  background-color: darkgray;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: 250ms all ease-in-out;
+}
+
+.home-link:hover .searchbar-button,
+.cart-link:hover .searchbar-button,
+.form button:hover .searchbar-button {
+  color: darkgray;
+  background-color: white;
+}
+
+.search-form {
+  height: 80%;
+  width: 60%;
+}
+
+.form {
+  display: flex;
+  height: 100%;
+}
+
+.form input {
+  width: 90%;
+  height: 100%;
+  padding-left: 20px;
+}
+
+.form button {
+  width: 10%;
+  height: 100%;
+  border: none;
+  font-size: 20px;
+}

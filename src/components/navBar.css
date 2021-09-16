@@ -1,0 +1,41 @@
+.navbar {
+  height: 50px;
+  width: 100%;
+  background-color: lightgreen;
+}
+
+.navbar ul {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.navbar-buttons {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  place-items: center;
+  cursor: default;
+  text-decoration: none;
+}
+
+.navbar-buttons button {
+  width: 90%;
+  height: 80%;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
+  background-color: darkgray;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  transition: 250ms all ease-in-out;
+}
+
+.navbar-buttons button:hover {
+  color: darkgray;
+  background-color: white;
+  cursor: pointer;
+}

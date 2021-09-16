@@ -3,10 +3,13 @@ import SearchBar from "./components/SearchBar";
 import BookContainer from "./components/BookContainer";
 import Cart from "./components/Cart";
 
+import "./app.css";
+
 import { useDispatch } from "react-redux";
 import { fetchBooks } from "./actions";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar";
+import Heading from "./components/Heading";
 
 function App() {
   const [searchedBook, setSearchedBook] = useState("");
@@ -22,6 +25,7 @@ function App() {
   return (
     <div>
       <Router>
+        <Heading />
         <SearchBar setSearchedBook={setSearchedBook} />
         <NavBar setSearchedBook={setSearchedBook} />
         <Switch>
