@@ -8,18 +8,18 @@ function BookCard({ book }) {
 
   const cartIDs = cart.map((item) => item.id);
 
-  const handleAdd = (book) => {
-    dispatch(addBookToCart(book));
-  };
-
   return (
     <>
       <li key={book.isbn13}>
         {book.title} {book.price}
       </li>
 
-      {cartIDs.includes(book.isbn13) ? null : (
-        <button onClick={() => handleAdd(book)}>Add to cart</button>
+      {cartIDs.includes(book.isbn13) ? (
+        <p>Already in cart</p>
+      ) : (
+        <button onClick={() => dispatch(addBookToCart(book))}>
+          Add to cart
+        </button>
       )}
     </>
   );

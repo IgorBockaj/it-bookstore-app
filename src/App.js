@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { fetchBooks } from "./actions";
 import SearchBar from "./components/SearchBar";
-import { useDispatch } from "react-redux";
 import BookContainer from "./components/BookContainer";
 import Cart from "./components/Cart";
+
+import { useDispatch } from "react-redux";
+import { fetchBooks } from "./actions";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 function App() {
   const [searchedBook, setSearchedBook] = useState("");
@@ -18,14 +21,16 @@ function App() {
 
   return (
     <div>
-      <SearchBar setSearchedBook={setSearchedBook} />
-      <Cart />
-      <BookContainer />
-      <div>
-        <button onClick={() => setPage(1)}>1</button>
-        <button onClick={() => setPage(2)}>2</button>
-        <button onClick={() => setPage(3)}>3</button>
-      </div>
+      <Router>
+        <SearchBar setSearchedBook={setSearchedBook} />
+        <NavBar setSearchedBook={setSearchedBook} />
+        <Switch>
+          <Route path="/" exact>
+            <BookContainer setPage={setPage} />
+          </Route>
+          <Route path="/cart" exact component={Cart} />
+        </Switch>
+      </Router>
     </div>
   );
 }
