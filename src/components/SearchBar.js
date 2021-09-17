@@ -26,7 +26,7 @@ function SearchBar({ setSearchedBook }) {
     <div className="search-bar">
       <div className="home-link">
         <Link className="searchbar-button" to="/">
-          home
+          books
         </Link>
       </div>
       <div className="search-form">

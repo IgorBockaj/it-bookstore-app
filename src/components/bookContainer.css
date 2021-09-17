@@ -1,0 +1,28 @@
+.book-container {
+  width: 90%;
+  margin: 30px auto;
+}
+
+.cards {
+  min-height: 300px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  place-items: center;
+  position: relative;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.message {
+  width: 100%;
+  position: absolute;
+  top: 30%;
+  display: flex;
+  justify-content: center;
+}

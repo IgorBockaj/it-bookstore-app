@@ -7,6 +7,8 @@ export const addBookToCart = (book) => {
       title: book.title,
       price: book.price,
       id: book.isbn13,
+      img: book.image,
+      amount: 1,
     },
   };
 };

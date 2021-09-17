@@ -1,0 +1,16 @@
+.pagination button {
+  height: 50px;
+  width: 50px;
+  margin: 0 20px;
+  border: none;
+  background-color: darkgray;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.15s all ease-in-out;
+}
+
+.pagination button:hover {
+  background-color: white;
+  color: darkgray;
+}
